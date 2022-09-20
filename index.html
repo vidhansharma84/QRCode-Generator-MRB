@@ -1,0 +1,53 @@
+<?php
+?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Generating QR Code</title>
+    <!-- Reference the qrcode library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  </head>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <body>
+ <!-- component -->
+<div class="min-h-screen bg-purple-400 flex justify-center items-center">
+	<div class="absolute w-60 h-60 rounded-xl bg-purple-300 -top-5 -left-16 z-0 transform rotate-45 hidden md:block">
+	</div>
+	<div class="absolute w-48 h-48 rounded-xl bg-purple-300 -bottom-6 -right-10 transform rotate-12 hidden md:block">
+	</div>
+	<div class="py-12 px-12 bg-white rounded-2xl shadow-xl z-20">
+		<div>
+			<h1 class="text-3xl font-bold text-center mb-4 cursor-pointer">QR Code Generator</h1>
+			<p class="w-80 text-center text-sm mb-8 font-semibold text-gray-700 tracking-wide cursor-pointer">Enter Data</p>
+		</div>
+		<div class="space-y-4">
+			<input type="text" id="text" placeholder="Enter Data" class="block text-sm py-3 px-4 rounded-lg w-full border outline-none" />
+			
+    </div>
+			<div class="text-center mt-6">
+				<button  id="create-qrcode" class="py-3 w-64 text-xl text-white bg-purple-400 rounded-2xl">Generate</button>
+				<center><a href="index.php"><p class="py-3 w-64 text-xl text-white bg-purple-400 rounded-2xl my-5">Refresh</p></a></center>
+				</p>
+			</div>
+		</div>
+        <div class="ml-5" id="qrcode-container"></div>
+		
+  
+	</div>
+ 
+  </body>
+  <script src="qrcode_min.js" ></script>
+  <script>
+
+    // Create QR code when button is clicked
+    document.getElementById("create-qrcode").addEventListener("click", () => {
+      // new QRCode(Target container, text to encode)
+      var text=document.getElementById("text").value;
+     
+      var qrc = new QRCode (
+        document.getElementById("qrcode-container"),
+        text
+      );
+    });
+  </script>
+</html>
